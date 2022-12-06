@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: poc-anthos
+  name: poc-anthos-ns-admin
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["*"]
+  verbs: ["*"]
+#Allow all resources, verbs, apiGroups in poc-anthos namespace

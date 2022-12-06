@@ -1,0 +1,15 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  namespace: poc-anthos
+  name: deny-from-other-namespaces
+spec:
+  policyTypes:
+  - Ingress
+  podSelector:
+    matchLabels: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            env: poc-anthos

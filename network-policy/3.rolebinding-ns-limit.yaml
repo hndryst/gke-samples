@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: poc-anthos-ns-admin-binding
+  namespace: poc-anthos
+subjects:
+# Google Cloud user account
+- kind: User
+  name: namespace-limited@sample-project.iam.gserviceaccount.com
+roleRef:
+  kind: Role
+  name: poc-anthos-ns-admin
+  apiGroup: rbac.authorization.k8s.io

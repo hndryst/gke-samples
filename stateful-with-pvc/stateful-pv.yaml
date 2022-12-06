@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: helloweb-stateful
+  labels:
+    app: hello-stateful
+spec:
+  replicas: 1
+  serviceName: "helloweb"
+  selector:
+    matchLabels:
+      app: hello-stateful
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: hello-stateful
+        tier: web
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: hello-app
+        image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 200m
+        volumeMounts:
+          - mountPath: "/data"
+            name: pvc-data-dir
+      volumes:
+      - name: pvc-data-dir
+        persistentVolumeClaim:
+          claimName: pvc-5gi
