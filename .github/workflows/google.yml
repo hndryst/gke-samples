@@ -26,6 +26,7 @@ env:
   GKE_CLUSTER: cluster-1    # TODO: update to cluster name
   GKE_ZONE: asia-southeast2-a   # TODO: update to cluster zone
   DEPLOYMENT_NAME: deployment.yaml # TODO: update to deployment name
+  HPA_NAME: hpa.yaml # TODO: update to deployment name
 
 jobs:
   setup-build-publish-deploy:
@@ -62,5 +63,6 @@ jobs:
       run: |-
         # replacing the image name in the k8s template
         kubectl apply -f $DEPLOYMENT_NAME
+        kubectl apply -f $HPA_NAME
         kubectl get pods -o wide
         kubectl get services -o wide
