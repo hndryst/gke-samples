@@ -25,9 +25,10 @@ env:
   #GAR_LOCATION: us-central1 # TODO: update region of the Artifact Registry
   GKE_CLUSTER: cluster-1    # TODO: update to cluster name
   GKE_ZONE: asia-southeast2-a   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: deployment.yaml # TODO: update to deployment name
-  HPA_NAME: hpa.yaml # TODO: update to deployment name
-
+  DEPLOYMENT_NAME: deployment.yaml
+  HPA_NAME: hpa.yaml
+  SVC_NAME: service-loadbalancer.yaml
+  
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
@@ -62,7 +63,6 @@ jobs:
     - name: Deploy
       run: |-
         # replacing the image name in the k8s template
-        kubectl apply -f $DEPLOYMENT_NAME
-        kubectl apply -f $HPA_NAME
+        kubectl apply -f $DEPLOYMENT_NAME -f $HPA_NAME -f $SVC_NAME
         kubectl get pods -o wide
         kubectl get services -o wide
