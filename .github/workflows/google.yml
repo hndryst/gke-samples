@@ -62,5 +62,5 @@ jobs:
       run: |-
         # replacing the image name in the k8s template
         kubectl apply -f $DEPLOYMENT_NAME
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
+        kubectl get pods -o wide
         kubectl get services -o wide
