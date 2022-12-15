@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hello
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: hello
@@ -22,5 +22,9 @@ spec:
         ports:
         - containerPort: 8080
         resources:
-          requests:
+          requests: #Used by scheduler to determine where the pods will be deployed, pods is guaranteed to get much resources
             cpu: 200m
+            memory: 128Mi
+          limits: #
+            cpu: 200m #if reached pods will get throttled
+            memory: 128Mi #if reached pods might get OOM killed
