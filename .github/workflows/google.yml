@@ -50,7 +50,7 @@ jobs:
       with:
         token_format: 'access_token'
         workload_identity_provider: 'projects/226429748228/locations/global/workloadIdentityPools/github-actions/providers/github'
-        service_account: 'github-actions@datalabs-hs.iam.gserviceaccount.com'
+        service_account: 'github-actions@${{ secrets.GKE_PROJECT }}.iam.gserviceaccount.com'
 
     # Get the GKE credentials so we can deploy to the cluster
     - name: Set up GKE credentials
