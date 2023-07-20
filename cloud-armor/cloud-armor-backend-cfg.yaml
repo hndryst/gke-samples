@@ -5,4 +5,4 @@ metadata:
   name: cloud-armor-cfg
 spec:
   securityPolicy:
-    name: "gtb-tokyo-armor"
+    name: "security-policy-1"
