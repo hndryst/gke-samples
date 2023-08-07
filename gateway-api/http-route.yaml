@@ -1,0 +1,27 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: helloweb
+spec:
+  parentRefs:
+    - kind: Gateway
+      name: helloweb
+  # hostnames:
+  #   - "*"
+  rules:
+    - backendRefs:
+        - name: helloweb #ClusterIP
+          port: 80
+      # - matches:
+      #     - headers:
+      #         - name: env
+      #           value: canary
+      #   backendRefs:
+      #     - name: store-v2
+      #       port: 8080
+      # - matches:
+      #     - path:
+      #         value: /de
+      #   backendRefs:
+      #     - name: store-german
+      #       port: 8080

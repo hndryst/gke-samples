@@ -1,0 +1,12 @@
+kind: Gateway
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: helloweb
+  annotations:
+    networking.gke.io/certmap: zxcvhs-ssl-map
+spec:
+  gatewayClassName: gke-l7-global-external-managed
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
