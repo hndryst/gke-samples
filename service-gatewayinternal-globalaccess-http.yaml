@@ -38,6 +38,6 @@ spec:
   parentRefs:
   - name: helloweb-gateway-http
   rules:
-  - backendRefs:
+  - backendRefs: # ClusterIP Service
     - name: helloweb
       port: 80
