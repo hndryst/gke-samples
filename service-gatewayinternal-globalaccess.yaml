@@ -41,6 +41,8 @@ metadata:
 spec:
   parentRefs:
   - name: helloweb-gateway
+  hostnames:
+  - test.zxcvhs.com
   rules:
   - backendRefs: #ClusterIP Service
     - name: helloweb
