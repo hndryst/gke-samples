@@ -1,0 +1,12 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig #https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-configuration#associating_backendconfig_with_your_ingress
+metadata:
+  name: kong
+  namespace: default
+spec:
+  healthCheck:
+    checkIntervalSec: 15
+    timeoutSec: 15
+    port: 8001 #Can be different from serving port
+    type: HTTP
+    requestPath: /status

@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig #https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-configuration#associating_frontendconfig_with_your_ingress
+metadata:
+  name: kong
+  namespace: default
+spec:
+  redirectToHttps:
+    enabled: true
+    responseCodeName: "301"
