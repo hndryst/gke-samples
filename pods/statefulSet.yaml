@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: redis 
+  serviceName: "redis"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      terminationGracePeriodSeconds: 15
+      containers:
+      - name: redis
+        image: docker.io/redis:7.2.1
+        args:
+        - --port 6377
+        ports:
+        - containerPort: 6377
+        resources:
+              requests:
+                cpu: 250m
+                memory: 512Mi
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis
+spec:
+  maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: redis
