@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: helloweb
+  namespace: default
   labels:
     app: hello
 spec:
@@ -11,5 +12,6 @@ spec:
     - port: 80
       targetPort: 8080
   type: LoadBalancer
+  loadBalancerIP: 34.101.58.146 #Need to provision public static IP first
   loadBalancerSourceRanges:
     - 103.107.198.243/32
