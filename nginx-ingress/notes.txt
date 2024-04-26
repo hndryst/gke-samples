@@ -1,0 +1,2 @@
+Export the config map yaml from the cluster using:
+kubectl get configmap nginx-ingress-nginx-controller -o yaml > configmap-nginx-controller.yaml
