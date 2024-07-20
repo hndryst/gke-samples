@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloweb
+  namespace: default
+  networking.gke.io/load-balancer-type: "Internal" # Need proxy only subnet to be provisioned beforehand
+  labels:
+    app: hello
+spec:
+  selector:
+    app: hello
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+  # loadBalancerIP: 172.16.0.128
