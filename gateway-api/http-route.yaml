@@ -2,12 +2,14 @@ kind: HTTPRoute
 apiVersion: gateway.networking.k8s.io/v1beta1
 metadata:
   name: helloweb
+  namespace: default
 spec:
   parentRefs:
     - kind: Gateway
       name: helloweb
+      namespace: default 
   # hostnames:
-  #   - "*"
+  #   - "example.com"
   rules:
     - backendRefs:
         - name: helloweb #ClusterIP
